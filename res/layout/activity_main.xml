@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back_img"
+    >
+    <TextView 
+        android:id="@+id/tv_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="设置服务器IP"
+        android:background="@drawable/selector_bt_zhuce"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:textSize="16sp"
+        android:layout_margin="8dp"
+        />
+<RelativeLayout 
+    android:id="@+id/rl_zhuce"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="114dp"
+    >
+    <ImageView
+        android:id="@+id/bt_paizhao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"  		
+        android:background="@drawable/selector_bt"
+        android:clickable="true"
+       />
+    <TextView
+        android:text="拍照"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        />
+</RelativeLayout>
+ <RelativeLayout 
+     android:layout_below="@id/rl_zhuce"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="50dp"
+    >
+    <ImageView
+        android:id="@+id/bt_zhuce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"  		
+       android:background="@drawable/selector_bt" 
+           android:clickable="true"
+       />
+    <TextView
+        android:text="注册"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        />
+</RelativeLayout>
+
+<TextView 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="人脸识别系统V1.0"
+    android:textSize="19sp"
+    android:textColor="#ffff"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="26dp"
+    />
+<TextView 
+    android:id="@+id/tv_bottom"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Copyright2017 ujn All Rights Reserved"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:textColor="@android:color/darker_gray"
+    android:paddingBottom="5dp"
+    />
+
+</RelativeLayout>
