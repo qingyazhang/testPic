@@ -2,74 +2,89 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_img2"
+    android:background="@drawable/back3"
      >
     <ImageView
         android:layout_margin="30dp"
         android:id="@+id/iv_pic"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:src="@drawable/ic_launcher"
+        android:layout_width="113dp"
+        android:layout_height="113dp"
+        android:padding="1dp"
+        
+        android:src="@drawable/img_up"
         android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
         />
     <EditText 
         android:id="@+id/et_name"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:hint="姓名"        
+		android:hint="   姓名"        
+		android:drawableLeft="@drawable/name"
 		android:layout_below="@id/iv_pic"
 		 android:layout_centerHorizontal="true"
+		 android:layout_marginLeft="40dp"
+		 android:layout_marginRight="40dp"
         />
     
     <EditText 
         android:id="@+id/et_age"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:hint="年龄"        
+		android:hint="   年龄"        
+		android:drawableLeft="@drawable/age"
 		android:layout_below="@id/et_name"
 		 android:layout_centerHorizontal="true"
+		  android:layout_marginLeft="40dp"
+		 android:layout_marginRight="40dp"
         />
     <EditText 
         android:id="@+id/et_jianjie"
 		android:layout_width="match_parent"
 		android:layout_height="50dp"
 		android:layout_below="@id/et_age"
-		android:hint="简介"        
+		android:hint="   简介"        
+		android:drawableLeft="@drawable/jianjie"
 		 android:layout_centerHorizontal="true"
+		  android:layout_marginLeft="40dp"
+		 android:layout_marginRight="40dp"
         />
-    <LinearLayout 
+    <RelativeLayout 
         android:layout_marginTop="80dp"
         android:layout_below="@id/et_jianjie"
           android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+      
         >
     <TextView 
         android:id="@+id/tv_ok"
-        android:padding="5dp"
-         android:layout_margin="8dp"
-        android:layout_width="0dp"
-        android:layout_weight="1"
+        android:padding="7dp"
+         android:layout_marginLeft="40dp"
+         android:layout_marginRight="20dp"
+        android:layout_width="120dp"
+     
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="确定"
         android:textSize="21sp"
            android:background="@drawable/selector_bt_zhuce"
            android:clickable="true"
+           android:textColor="#fff"
         />
     <TextView 
          android:id="@+id/tv_cancle"
-        android:layout_margin="8dp"
-        android:padding="5dp"
-   android:layout_width="0dp"
-        android:layout_weight="1"
+          android:layout_marginRight="40dp"
+        android:padding="7dp"
+ android:layout_alignParentRight="true"
+		android:layout_width="120sp"
         android:layout_height="wrap_content"
         android:text="取消"
          android:textSize="21sp"
         android:gravity="center"
        android:background="@drawable/selector_bt_zhuce"
        android:clickable="true"
+       android:textColor="#fff"
         />
    
-</LinearLayout>
+</RelativeLayout>
 </RelativeLayout>

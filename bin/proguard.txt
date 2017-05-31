@@ -1,0 +1,42 @@
+# view AndroidManifest.xml #generated:147
+-keep class cn.jpush.android.service.AlarmReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:85
+-keep class cn.jpush.android.service.DaemonService { <init>(...); }
+
+# view AndroidManifest.xml #generated:140
+-keep class cn.jpush.android.service.DownloadService { <init>(...); }
+
+# view AndroidManifest.xml #generated:96
+-keep class cn.jpush.android.service.PushReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:71
+-keep class cn.jpush.android.service.PushService { <init>(...); }
+
+# view res/layout/jpush_webview_layout.xml #generated:2
+-keep class cn.jpush.android.ui.FullScreenView { <init>(...); }
+
+# view AndroidManifest.xml #generated:128
+-keep class cn.jpush.android.ui.PopWinActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:116
+-keep class cn.jpush.android.ui.PushActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:51
+-keep class com.example.testpic.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:43
+-keep class com.example.testpic.MyApplication { <init>(...); }
+
+# view AndroidManifest.xml #generated:62
+-keep class com.example.testpic.SplashActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:56
+-keep class com.example.testpic.ZhuceActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:150
+-keep class com.example.testpic.receiver.PushReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:57
+-keep class com.example.testpic.service.UpLoadService { <init>(...); }
+

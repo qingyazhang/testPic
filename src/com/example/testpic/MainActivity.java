@@ -17,6 +17,7 @@ import com.example.testpic.service.UpLoadService;
 import com.example.testpic.utils.SpUtil;
 import com.example.testpic.utils.StreamUtil;
 
+
 import android.R.color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,19 +25,25 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,9 +54,17 @@ public class MainActivity extends Activity {
 			if(msg.what==11){
 				iv_pic.setImageBitmap((Bitmap)msg.obj);
 				return;
-			}
+			}else if(msg.what==12){
+				proDialog.dismiss();
 			String mresult = (String) msg.obj;
-			openDialog(mresult);
+			openDialog(mresult);}
+			else if(msg.what==13){
+				proDialog.dismiss();
+				showFieldDialog();
+			}else if(msg.what==14){
+				proDialog.dismiss();
+				showFieldDialog2();
+			}
 		};
 	};
 	 private static final String TAG = "uploadFile";  
@@ -60,17 +75,86 @@ public class MainActivity extends Activity {
 	private ImageView bt_paizhao;
 	private ImageView bt_zhuce;
 	private File file;
-	private TextView tv_ip;
+
 	private EditText edit;
 	private ImageView iv_pic;
-
+	private AlertDialog dialog;
+	private static String ip;
+	private ProgressDialog proDialog;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		System.out.println("MainActivity 启动了！！！！！！！！！！！！！！！！！！！！！！！！！ ");
+		
+		initIP();
 		initView();
+		initAnim();
 		initListener();
 	}
+
+
+
+//	@Override
+//	private void onCreate(Bundle savedInstanceState) {
+//		super.onCreate(savedInstanceState);
+//		setContentView(R.layout.activity_main);
+//		initView();
+//		initListener();
+//		//initSliderMenu();
+//	}
+
+//	private void initSliderMenu() {
+//		// TODO Auto-generated method stub
+//		setBehindContentView(R.layout.activity_slider);
+//		SlidingMenu slidingMenu = getSlidingMenu();
+//		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);//全屏触摸
+//		slidingMenu.setBehindOffset(266);//屏幕预留200像素宽度
+//	}
+
+	private void initAnim() {
+		// TODO Auto-generated method stub
+	
+				RelativeLayout rl_zhuce = (RelativeLayout) findViewById(R.id.rl_zhuce);
+				RelativeLayout rl_paizhao = (RelativeLayout) findViewById(R.id.rl_paizhao);
+				 ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(rl_zhuce, "alpha", 0f, 1f,1f);        
+			     objectAnimator.setDuration(3000).start(); 
+			 
+			     ObjectAnimator objectAnimator2 = ObjectAnimator.ofFloat(rl_paizhao, "alpha", 0f, 1f,1f);        
+			   
+			     objectAnimator2.setDuration(4182).start();
+
+	
+	}
+
+
+
+	protected void showFieldDialog2() {
+		// TODO Auto-generated method stub
+		  AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);  //先得到构造器  
+	        builder.setTitle("严重错误！！"); //设置标题  
+	        builder.setMessage("严重错误！！\n服务器端出现了严重错误！！ "); //设置内容  
+	     
+	        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() { //设置确定按钮  
+	            @Override  
+	            public void onClick(DialogInterface dialog, int which) {  
+	                dialog.dismiss(); //关闭dialog  
+	            
+	            }  
+	        });  
+	        builder.show(); 
+	}
+
+
+
+	private void initIP() {
+		// TODO Auto-generated method stub
+		SpUtil.putString(getApplicationContext(), "IP", "47.93.87.89");
+		//SpUtil.putString(getApplicationContext(), "IP", "192.168.42.144");
+	}
+
+
 
 	/**
 	 * 返回服务器端数据后显示内容
@@ -170,59 +254,9 @@ public class MainActivity extends Activity {
 				startActivity(new Intent(getApplicationContext(),ZhuceActivity.class));
 			}
 		});
-		tv_ip.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				setIP();
-			}
-		});
+
 	}
 
-	protected void setIP() {
-		// TODO Auto-generated method stub
-		AlertDialog.Builder builder = new Builder(MainActivity.this);
-		
-		builder.setTitle("请输入服务器IP，默认端口为8080，无需输入");	//设置对话框标题
-
-		builder.setIcon(android.R.drawable.btn_star);	//设置对话框标题前的图标
-		edit = new EditText(getApplicationContext());
-		edit.setTextColor(color.black);
-		
-		builder.setView(edit);
-
-		builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-
-		@Override
-
-		public void onClick(DialogInterface dialog, int which) {
-
-		//Toast.makeText(ge, "你输入的是: " + edit.getText().toString(), Toast.LENGTH_SHORT).show();
-				SpUtil.putString(getApplicationContext(), "IP", edit.getText().toString().trim());
-		}
-
-		});
-
-		builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-
-		@Override
-
-		public void onClick(DialogInterface dialog, int which) {
-
-		Toast.makeText(getApplicationContext(), "你点了取消", Toast.LENGTH_SHORT).show();
-
-		}
-
-		});
-		builder.setCancelable(true);	//设置按钮是否可以按返回键取消,false则不可以取消
-
-		AlertDialog dialog = builder.create();	//创建对话框
-
-		dialog.setCanceledOnTouchOutside(true);	//设置弹出框失去焦点是否隐藏,即点击屏蔽其它地方是否隐藏
-
-		dialog.show();
-	}
 
 	protected void takePic() {
 		// TODO Auto-generated method stub
@@ -245,7 +279,7 @@ public class MainActivity extends Activity {
 	private void initView() {
 		bt_paizhao = (ImageView) findViewById(R.id.bt_paizhao);
 		bt_zhuce = (ImageView) findViewById(R.id.bt_zhuce);
-		tv_ip = (TextView) findViewById(R.id.tv_ip);
+		
 	}
 	 public void decodePic(){
 		  BitmapFactory.Options options = new BitmapFactory.Options();  
@@ -254,7 +288,7 @@ public class MainActivity extends Activity {
 	      Bitmap bitmap = BitmapFactory.decodeFile(file.toString(), options); //此时返回bm为空  
 	      options.inJustDecodeBounds = false;  
 	       //计算缩放比  
-	      int be = (int)(options.outHeight / (float)150);  
+	      int be = (int)(options.outHeight / (float)240);  
 	      if (be <= 0)  
 	          be = 1;  
 	      options.inSampleSize = be;  
@@ -270,6 +304,7 @@ public class MainActivity extends Activity {
 	      File file=new File("/sdcard/my.jpg"); 
 	      try { 
 	          FileOutputStream out=new FileOutputStream(file); 
+	          bitmap = MainActivity.centerSquareScaleBitmap(bitmap, 224);
 	          if(bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)){ 
 	              out.flush(); 
 	              out.close(); 
@@ -286,7 +321,18 @@ public class MainActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
+		
+		ip = SpUtil.getString(getApplicationContext(), "IP", "");
+		if(ip.equals("")){
+			Toast.makeText(getApplicationContext(), "ip不能为空", 0).show();
+			return;
+		}
+		if(!file.exists()){
+			Toast.makeText(getApplicationContext(), "咦，没有检测到你拍的照片哦^_^", 0).show();
+			return;
+		}
 		if(file.exists()){
+			showProgressDialog();
 			decodePic();
 			Toast.makeText(getApplicationContext(), "开始上传", 0).show();
 			new Thread(){
@@ -298,10 +344,29 @@ public class MainActivity extends Activity {
 					boolean tag = true;
 					while(tag){
 					if(result!=null&&result.length()>3){
+					
+						if(result.equals("wrong")){
+							Message msg = Message.obtain();
+							System.out.println();
+							msg.what = 14;
+							handler.sendMessage(msg);
+							
+						break;
+						}
+						if(result.equals("null")){
+							Message msg = Message.obtain();
+							msg.what = 13;
+							handler.sendMessage(msg);
+							
+						break;
+						}else{
 						Message msg = Message.obtain();
 						msg.obj = result;
+						msg.what=12;
 						handler.sendMessage(msg);
 						tag = false;
+						break;
+						}
 					}else{
 						try {
 							Thread.sleep(100);
@@ -321,11 +386,43 @@ public class MainActivity extends Activity {
 			}.start();
 		}
 	}
-	  public static String uploadFile(File file) {  
+	  private void showProgressDialog() {
+		proDialog = new ProgressDialog(this);
+		proDialog.setTitle("提示");
+		proDialog.setMessage("正在检测人脸，请稍候...");
+		proDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		proDialog.show();
+		
+	}
+
+
+
+	protected void showFieldDialog() {
+		// TODO Auto-generated method stub
+		  AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);  //先得到构造器  
+	        builder.setTitle("未检测到人脸"); //设置标题  
+	        builder.setMessage("可能的原因有\n1.光线不足\n2.您尚未注册\n3.服务器内部错误\n请您重新尝试拍照"); //设置内容  
+	     
+	        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() { //设置确定按钮  
+	            @Override  
+	            public void onClick(DialogInterface dialog, int which) {  
+	                dialog.dismiss(); //关闭dialog  
+	            
+	            }  
+	        });  
+	      
+	  
+	      
+	        //参数都设置完成了，创建并显示出来  
+	        builder.show();  
+	}
+
+	public static String uploadFile(File file) {  
 	        String BOUNDARY = UUID.randomUUID().toString(); // 边界标识 随机生成  
 	        String PREFIX = "--", LINE_END = "\r\n";  
 	        String CONTENT_TYPE = "multipart/form-data"; // 内容类型  
-	        String RequestURL = "http://192.168.123.79:8080/day12-upload/PaizhaoServlet";  
+	       
+	        String RequestURL = "http://"+ip+":8080/day12-upload/PaizhaoServlet";  
 	        try {  
 	            URL url = new URL(RequestURL);  
 	            HttpURLConnection conn = (HttpURLConnection) url.openConnection();  
@@ -373,6 +470,7 @@ public class MainActivity extends Activity {
 	                        .getBytes();  
 	                dos.write(end_data);  
 	                dos.flush();  
+	                file.delete();
 	                /** 
 	                 * 获取响应码 200=成功 当响应成功，获取响应的流 
 	                 */  

@@ -1,49 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/back_img2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#33000000"
      >
-     
-    <ImageView
+     <RelativeLayout 
+         android:id="@+id/ll_rpic"
+         
+         android:layout_width="wrap_content"
+         android:layout_marginTop="30dp"
+         android:layout_height="wrap_content"
+       
+         android:layout_centerHorizontal="true"
+         
+         >
+     <TextView 
+         android:id="@+id/tv_rpic"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="识别结果^_^"
+      
+         android:textSize="21sp"
+         android:textColor="#f000"
+       android:layout_centerHorizontal="true"
+         />
+    <ImageView 
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/tv_rpic"
         android:id="@+id/iv_rpic"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
         android:layout_centerHorizontal="true"
      
         />
+    </RelativeLayout>
+    <LinearLayout 
+        android:layout_margin="15dp"
+        android:id="@+id/ll_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+         android:layout_below="@id/ll_rpic"
+         
+        >
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Id:"
+            android:textColor="#f000"
+            android:textSize="19sp"
+            />
     <TextView 
         android:id="@+id/tv_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/iv_rpic"
+       android:textSize="19sp"
         android:textColor="#f000"
      
         />
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_margin="15dp"
+        android:id="@+id/ll_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+         android:layout_below="@id/ll_id"
+        >
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:textColor="#f000"
+            android:textSize="19sp"
+            />
     <TextView 
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/tv_id"
-         android:textColor="#f000"
+       android:textSize="19sp"
+        android:textColor="#f000"
+     
         />
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_margin="15dp"
+        android:id="@+id/ll_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+         android:layout_below="@id/ll_name"
+        >
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age:"
+            android:textColor="#f000"
+            android:textSize="19sp"
+            />
     <TextView 
         android:id="@+id/tv_age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/tv_name"
-         android:textColor="#f000"
+       android:textSize="19sp"
+        android:textColor="#f000"
+     
         />
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_margin="15dp"
+        android:id="@+id/ll_jianjie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+         android:layout_below="@id/ll_age"
+        >
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile:"
+            android:textColor="#f000"
+            android:textSize="19sp"
+            />
     <TextView 
         android:id="@+id/tv_jianjie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/tv_age"
-         android:textColor="#f000"
-        
+       android:textSize="19sp"
+        android:textColor="#f000"
+        android:layout_marginBottom="30dp"
+     
         />
+    </LinearLayout>
+    
 </RelativeLayout>

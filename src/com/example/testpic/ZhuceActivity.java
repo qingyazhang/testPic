@@ -28,14 +28,18 @@ import com.example.testpic.utils.SpUtil;
 import com.example.testpic.utils.StreamUtil;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -47,6 +51,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ZhuceActivity extends Activity {
+
 	 private static final String TAG = "uploadFile";  
 	    private static final int TIME_OUT = 10 * 10000000; // 超时时间  
 	    private static final String CHARSET = "utf-8"; // 设置编码  
@@ -63,10 +68,27 @@ public class ZhuceActivity extends Activity {
 	private static String ip;
 	Handler handler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
-			
+			if(msg.what==10){
+				showFinishDialog();
+			}
+			if(msg.what==11){
+				tv_ok.setVisibility(View.VISIBLE);
+				Toast.makeText(getApplicationContext(), "图片不能为空！！", 0).show();
+			}
+			if(msg.what==12){
+				tv_ok.setVisibility(View.VISIBLE);
+				Toast.makeText(getApplicationContext(), "姓名不能为空！！", 0).show();
+			}
+			if(msg.what==13){
+				showFaildDialog();
+			}
 		};
 	};
 	private File file;
+	/**
+	 * 检测是否输入字段都正确
+	 */
+	private int oktag;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +97,46 @@ public class ZhuceActivity extends Activity {
 		setContentView(R.layout.activity_zhuce);
 		initView();
 		initListener();
+	}
+
+	protected void showFaildDialog() {
+		// TODO Auto-generated method stub
+		  AlertDialog.Builder builder=new AlertDialog.Builder(ZhuceActivity.this);  //先得到构造器  
+	        builder.setTitle("错误"); //设置标题  
+	        builder.setMessage("注册失败，请稍后再试"); //设置内容  
+	     
+	        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() { //设置确定按钮  
+	            @Override  
+	            public void onClick(DialogInterface dialog, int which) {  
+	                dialog.dismiss(); //关闭dialog  
+	                finish();
+	            }  
+	        });  
+	      
+	  
+	      
+	        //参数都设置完成了，创建并显示出来  
+	        builder.show();  
+	}
+
+	protected void showFinishDialog() {
+		// TODO Auto-generated method stub
+		  AlertDialog.Builder builder=new AlertDialog.Builder(ZhuceActivity.this);  //先得到构造器  
+	        builder.setTitle("提示"); //设置标题  
+	        builder.setMessage("恭喜您注册完成"); //设置内容  
+	     
+	        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() { //设置确定按钮  
+	            @Override  
+	            public void onClick(DialogInterface dialog, int which) {  
+	                dialog.dismiss(); //关闭dialog  
+	                finish();
+	            }  
+	        });  
+	      
+	  
+	      
+	        //参数都设置完成了，创建并显示出来  
+	        builder.show();  
 	}
 
 	private void initListener() {
@@ -101,49 +163,82 @@ public class ZhuceActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+			
+				tv_ok.setVisibility(View.GONE);
 				ip = SpUtil.getString(getApplicationContext(), "IP", "");
 				if(ip==""){
 					Toast.makeText(getApplicationContext(), "请先设置IP", 0).show();
 					return;
 				}
 				initUpLoad();
+			
 			}
 		});
 	}
 	private void initUpLoad() {
 		// TODO Auto-generated method stub
 		
-	
+	oktag = 0;
 	
 	//	SpUtil.putString(getApplicationContext(),ConstantValue.VISIT_STATE , "1");
 		//tag = SpUtil.getString(getApplicationContext(), ConstantValue.VISIT_STATE, "0");
 	
-		Toast.makeText(getApplicationContext(), "init", 0).show();
+
 		new Thread(){
 		
 
 			public void run() {
 				File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(),"my.jpg");
+				String name = et_name.getText().toString().trim();
+				String age = et_age.getText().toString().trim();
+				String jianjie = et_jianjie.getText().toString().trim();
+				if(name.equals("")){
+					Message msg = Message.obtain();
+					msg.what=12;
+					handler.sendMessage(msg);
+					return;
+				}
+				if(!file.exists()){
+					Message msg = Message.obtain();
+					msg.what=11;
+					handler.sendMessage(msg);
+					return;
+				}
+			oktag=1;
 				picUrl = uploadFile(file);
+				
 			};
 		}.start();
 		tag2 = true;
+	/**
+	 * @author Administrator
+	 *上传注册字段
+	 */
 	new Thread(){
 		public void run() {
 			while(tag2){
 				try {
-					Thread.sleep(200);
+					Thread.sleep(100);
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+				if(oktag==0){
+					return;
+				}
 				if(picUrl!=null&&(!picUrl.isEmpty())&&(!picUrl.equals(""))){
+					if(picUrl.length()<3){
+						Message msg = Message.obtain();
+						msg.what=13;
+						handler.sendMessage(msg);
+						return;
+					}
 					tag2 = false;
 					String path = "http://"+ip+":8080/day12-upload/zhuce";
 					String name = et_name.getText().toString().trim();
 					String age = et_age.getText().toString().trim();
 					String jianjie = et_jianjie.getText().toString().trim();
+				
 				 try {
 					// 创建一个 httpClient 对象
 				 HttpClient client = new DefaultHttpClient();
@@ -168,6 +263,9 @@ public class ZhuceActivity extends Activity {
 				new UrlEncodedFormEntity(parameters, "utf-8");
 				//设置请求体
 				request.setEntity(requestEntity);
+				Message msg = Message.obtain();
+				msg.what = 10;
+				handler.sendMessage(msg);
 			// 执行操作
 			 HttpResponse response = client.execute(request);
 				 // 获取放回状态对象
@@ -203,6 +301,7 @@ public class ZhuceActivity extends Activity {
         String PREFIX = "--", LINE_END = "\r\n";  
         String CONTENT_TYPE = "multipart/form-data"; // 内容类型  
         String RequestURL = "http://"+ip+":8080/day12-upload/AServlet";  
+        System.out.println("RequestURL!!!!!!!!!!!!!!!!!!"+RequestURL);
         try {  
             URL url = new URL(RequestURL);  
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();  
@@ -253,10 +352,12 @@ public class ZhuceActivity extends Activity {
                 /** 
                  * 获取响应码 200=成功 当响应成功，获取响应的流 
                  */  
+                file.delete();
                 int res = conn.getResponseCode();  
             	InputStream iss = conn.getInputStream();
                 String result = StreamUtil.streamToString(iss);
                 return result;
+          
 //                int res = conn.getResponseCode();  
 //                if (res == 200) {  
 //                    return SUCCESS;  
@@ -293,6 +394,7 @@ public class ZhuceActivity extends Activity {
 		et_jianjie = (EditText) findViewById(R.id.et_jianjie);
 		tv_ok = (TextView) findViewById(R.id.tv_ok);
 		tv_cancle = (TextView) findViewById(R.id.tv_cancle);
+		tv_ok.setVisibility(View.VISIBLE);
 	}
   public void decodePic(){
 	  BitmapFactory.Options options = new BitmapFactory.Options();  
@@ -301,7 +403,7 @@ public class ZhuceActivity extends Activity {
       Bitmap bitmap = BitmapFactory.decodeFile(file.toString(), options); //此时返回bm为空  
       options.inJustDecodeBounds = false;  
        //计算缩放比  
-      int be = (int)(options.outHeight / (float)150);  
+      int be = (int)(options.outHeight / (float)240);  
       if (be <= 0)  
           be = 1;  
       options.inSampleSize = be;  
@@ -319,7 +421,7 @@ public class ZhuceActivity extends Activity {
           WindowManager wm = this.getWindowManager();
           
           int width = wm.getDefaultDisplay().getWidth();
-          bitmap = MainActivity.centerSquareScaleBitmap(bitmap, 100);
+          bitmap = MainActivity.centerSquareScaleBitmap(bitmap, 224);
           if(bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)){ 
               out.flush(); 
               out.close(); 
@@ -338,7 +440,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	super.onActivityResult(requestCode, resultCode, data);
 	if(file.exists()){
 		decodePic();
-		
+		iv_pic.setBackgroundColor(Color.BLACK);
 	}
 }
 }

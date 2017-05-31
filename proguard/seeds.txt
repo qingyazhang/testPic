@@ -1,0 +1,121 @@
+android.support.v4.app.BackStackState
+android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.Fragment$SavedState
+android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentManagerState
+android.support.v4.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentState
+android.support.v4.app.FragmentState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentTabHost: void setOnTabChangedListener(android.widget.TabHost$OnTabChangeListener)
+android.support.v4.app.FragmentTabHost$SavedState
+android.support.v4.app.FragmentTabHost$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status[] values()
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status valueOf(java.lang.String)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColor(int)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColorResource(int)
+android.support.v4.view.PagerTabStrip: int getTabIndicatorColor()
+android.support.v4.view.PagerTabStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.PagerTabStrip: void setBackgroundColor(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundResource(int)
+android.support.v4.view.PagerTabStrip: void setDrawFullUnderline(boolean)
+android.support.v4.view.PagerTabStrip: boolean getDrawFullUnderline()
+android.support.v4.view.PagerTabStrip: int getMinHeight()
+android.support.v4.view.PagerTitleStrip: void setSingleLineAllCaps(android.widget.TextView)
+android.support.v4.view.PagerTitleStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTitleStrip: int getTextSpacing()
+android.support.v4.view.PagerTitleStrip: void setNonPrimaryAlpha(float)
+android.support.v4.view.PagerTitleStrip: void setTextColor(int)
+android.support.v4.view.PagerTitleStrip: void setGravity(int)
+android.support.v4.view.PagerTitleStrip: int getMinHeight()
+android.support.v4.view.ViewPager: void setScrollState(int)
+android.support.v4.view.ViewPager: void setAdapter(android.support.v4.view.PagerAdapter)
+android.support.v4.view.ViewPager: android.support.v4.view.PagerAdapter getAdapter()
+android.support.v4.view.ViewPager: void setOnAdapterChangeListener(android.support.v4.view.ViewPager$OnAdapterChangeListener)
+android.support.v4.view.ViewPager: void setCurrentItem(int)
+android.support.v4.view.ViewPager: int getCurrentItem()
+android.support.v4.view.ViewPager: void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
+android.support.v4.view.ViewPager: void setChildrenDrawingOrderEnabledCompat(boolean)
+android.support.v4.view.ViewPager: int getOffscreenPageLimit()
+android.support.v4.view.ViewPager: void setOffscreenPageLimit(int)
+android.support.v4.view.ViewPager: void setPageMargin(int)
+android.support.v4.view.ViewPager: int getPageMargin()
+android.support.v4.view.ViewPager: void setPageMarginDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.ViewPager: void setPageMarginDrawable(int)
+android.support.v4.view.ViewPager: void setScrollingCacheEnabled(boolean)
+android.support.v4.view.ViewPager$SavedState
+android.support.v4.view.ViewPager$SavedState: android.os.Parcelable$Creator CREATOR
+com.example.testpic.MainActivity
+com.example.testpic.MainActivity: MainActivity()
+com.example.testpic.R$color: int blue
+com.example.testpic.R$color: int bt_zhuce_nor
+com.example.testpic.R$color: int bt_zhuce_press
+com.example.testpic.R$dimen: int activity_horizontal_margin
+com.example.testpic.R$dimen: int activity_vertical_margin
+com.example.testpic.R$drawable: int age
+com.example.testpic.R$drawable: int back3
+com.example.testpic.R$drawable: int back_img
+com.example.testpic.R$drawable: int back_img2
+com.example.testpic.R$drawable: int ic_launcher
+com.example.testpic.R$drawable: int img_up
+com.example.testpic.R$drawable: int jianjie
+com.example.testpic.R$drawable: int name
+com.example.testpic.R$drawable: int selector_bt
+com.example.testpic.R$drawable: int selector_bt_zhuce
+com.example.testpic.R$drawable: int shape_point_press
+com.example.testpic.R$drawable: int shape_point_red
+com.example.testpic.R$drawable: int splash_img
+com.example.testpic.R$drawable: int tubiao
+com.example.testpic.R$id: int action_settings
+com.example.testpic.R$id: int bt_paizhao
+com.example.testpic.R$id: int bt_zhuce
+com.example.testpic.R$id: int et_age
+com.example.testpic.R$id: int et_jianjie
+com.example.testpic.R$id: int et_name
+com.example.testpic.R$id: int iv_pic
+com.example.testpic.R$id: int iv_rpic
+com.example.testpic.R$id: int ll_age
+com.example.testpic.R$id: int ll_id
+com.example.testpic.R$id: int ll_jianjie
+com.example.testpic.R$id: int ll_name
+com.example.testpic.R$id: int ll_rpic
+com.example.testpic.R$id: int rl_paizhao
+com.example.testpic.R$id: int rl_zhuce
+com.example.testpic.R$id: int tv_age
+com.example.testpic.R$id: int tv_bottom
+com.example.testpic.R$id: int tv_cancle
+com.example.testpic.R$id: int tv_id
+com.example.testpic.R$id: int tv_jianjie
+com.example.testpic.R$id: int tv_name
+com.example.testpic.R$id: int tv_ok
+com.example.testpic.R$id: int tv_rpic
+com.example.testpic.R$layout: int activity_main
+com.example.testpic.R$layout: int activity_resultdialog
+com.example.testpic.R$layout: int activity_splash
+com.example.testpic.R$layout: int activity_zhuce
+com.example.testpic.R$menu: int main
+com.example.testpic.R$string: int action_settings
+com.example.testpic.R$string: int app_name
+com.example.testpic.R$string: int hello_world
+com.example.testpic.R$style: int AppBaseTheme
+com.example.testpic.R$style: int AppTheme
+com.example.testpic.SplashActivity
+com.example.testpic.SplashActivity: SplashActivity()
+com.example.testpic.ZhuceActivity
+com.example.testpic.ZhuceActivity: ZhuceActivity()
+com.example.testpic.service.UpLoadService
+com.example.testpic.service.UpLoadService: UpLoadService()
+com.lidroid.xutils.bitmap.callback.BitmapLoadFrom: com.lidroid.xutils.bitmap.callback.BitmapLoadFrom[] values()
+com.lidroid.xutils.bitmap.callback.BitmapLoadFrom: com.lidroid.xutils.bitmap.callback.BitmapLoadFrom valueOf(java.lang.String)
+com.lidroid.xutils.db.sqlite.ColumnDbType: com.lidroid.xutils.db.sqlite.ColumnDbType[] values()
+com.lidroid.xutils.db.sqlite.ColumnDbType: com.lidroid.xutils.db.sqlite.ColumnDbType valueOf(java.lang.String)
+com.lidroid.xutils.http.HttpHandler$State: com.lidroid.xutils.http.HttpHandler$State[] values()
+com.lidroid.xutils.http.HttpHandler$State: com.lidroid.xutils.http.HttpHandler$State valueOf(java.lang.String)
+com.lidroid.xutils.http.client.HttpRequest$HttpMethod: com.lidroid.xutils.http.client.HttpRequest$HttpMethod[] values()
+com.lidroid.xutils.http.client.HttpRequest$HttpMethod: com.lidroid.xutils.http.client.HttpRequest$HttpMethod valueOf(java.lang.String)
+com.lidroid.xutils.http.client.multipart.HttpMultipartMode: com.lidroid.xutils.http.client.multipart.HttpMultipartMode[] values()
+com.lidroid.xutils.http.client.multipart.HttpMultipartMode: com.lidroid.xutils.http.client.multipart.HttpMultipartMode valueOf(java.lang.String)
+com.lidroid.xutils.task.Priority: com.lidroid.xutils.task.Priority[] values()
+com.lidroid.xutils.task.Priority: com.lidroid.xutils.task.Priority valueOf(java.lang.String)
+com.lidroid.xutils.view.ResType: com.lidroid.xutils.view.ResType[] values()
+com.lidroid.xutils.view.ResType: com.lidroid.xutils.view.ResType valueOf(java.lang.String)

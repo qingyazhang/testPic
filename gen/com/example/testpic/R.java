@@ -26,41 +26,51 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int back_img=0x7f020000;
-        public static final int back_img2=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int selector_bt=0x7f020003;
-        public static final int selector_bt_zhuce=0x7f020004;
-        public static final int shape_point_press=0x7f020005;
-        public static final int shape_point_red=0x7f020006;
+        public static final int age=0x7f020000;
+        public static final int back3=0x7f020001;
+        public static final int back_img=0x7f020002;
+        public static final int back_img2=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int img_up=0x7f020005;
+        public static final int jianjie=0x7f020006;
+        public static final int name=0x7f020007;
+        public static final int selector_bt=0x7f020008;
+        public static final int selector_bt_zhuce=0x7f020009;
+        public static final int shape_point_press=0x7f02000a;
+        public static final int shape_point_red=0x7f02000b;
+        public static final int splash_img=0x7f02000c;
+        public static final int tubiao=0x7f02000d;
     }
     public static final class id {
-        public static final int action_settings=0x7f090013;
-        public static final int bt_paizhao=0x7f090002;
+        public static final int action_settings=0x7f090016;
+        public static final int bt_paizhao=0x7f090001;
         public static final int bt_zhuce=0x7f090003;
-        public static final int btn1=0x7f090010;
-        public static final int btn2=0x7f090011;
-        public static final int cameraView=0x7f090012;
-        public static final int et_age=0x7f09000c;
-        public static final int et_jianjie=0x7f09000d;
-        public static final int et_name=0x7f09000b;
-        public static final int iv_pic=0x7f09000a;
-        public static final int iv_rpic=0x7f090005;
-        public static final int rl_zhuce=0x7f090001;
-        public static final int tv_age=0x7f090008;
+        public static final int et_age=0x7f090012;
+        public static final int et_jianjie=0x7f090013;
+        public static final int et_name=0x7f090011;
+        public static final int iv_pic=0x7f090010;
+        public static final int iv_rpic=0x7f090007;
+        public static final int ll_age=0x7f09000c;
+        public static final int ll_id=0x7f090008;
+        public static final int ll_jianjie=0x7f09000e;
+        public static final int ll_name=0x7f09000a;
+        public static final int ll_rpic=0x7f090005;
+        public static final int rl_paizhao=0x7f090002;
+        public static final int rl_zhuce=0x7f090000;
+        public static final int tv_age=0x7f09000d;
         public static final int tv_bottom=0x7f090004;
-        public static final int tv_cancle=0x7f09000f;
-        public static final int tv_id=0x7f090006;
-        public static final int tv_ip=0x7f090000;
-        public static final int tv_jianjie=0x7f090009;
-        public static final int tv_name=0x7f090007;
-        public static final int tv_ok=0x7f09000e;
+        public static final int tv_cancle=0x7f090015;
+        public static final int tv_id=0x7f090009;
+        public static final int tv_jianjie=0x7f09000f;
+        public static final int tv_name=0x7f09000b;
+        public static final int tv_ok=0x7f090014;
+        public static final int tv_rpic=0x7f090006;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_resultdialog=0x7f030001;
-        public static final int activity_zhuce=0x7f030002;
-        public static final int camera_activity=0x7f030003;
+        public static final int activity_splash=0x7f030002;
+        public static final int activity_zhuce=0x7f030003;
     }
     public static final class menu {
         public static final int main=0x7f080000;
